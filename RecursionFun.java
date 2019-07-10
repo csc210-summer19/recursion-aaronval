@@ -11,7 +11,7 @@
  * 
  * We will not be using code coverage for points.
  *
- * @author Rick Mercer and Your Name
+ * @author Rick Mercer and Aaron Valenzuela
  */
 public class RecursionFun {
 
@@ -115,7 +115,6 @@ public class RecursionFun {
 			return true;
 		else if (nums[index] > nums[index + 1])
 			return false;
-
 		return isSortedHelper(nums, index + 1);
 	}
 

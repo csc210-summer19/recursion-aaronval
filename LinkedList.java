@@ -6,7 +6,7 @@
  * 
  * E get(int) void removeAll(E) void duplicateAll(E)
  * 
- * @author Rick Mercer and Your Name
+ * @author Rick Mercer and Aaron Valenzuela
  */
 public class LinkedList<E extends Comparable<E>> {
 	// extends Comparable<E> means the type must be comparable to avoid CT
@@ -141,13 +141,17 @@ public class LinkedList<E extends Comparable<E>> {
 	}
 
 	private void removeAllHelper(E el, Node ref) {
-		if (el.equals(first.data))
-			first = ref.next;
-		else if (ref == null)
+		if (ref == null || ref.next == null)
 			return;
-		else if (el.equals(ref.next.data))
+		if (el.equals(first.data)) {
+			first = ref.next;
+			removeAllHelper(el, first);
+		}
+		else if(el.equals(ref.next.data)) {
 			ref.next = ref.next.next;
+		}
 		removeAllHelper(el, ref.next);
+		
 	}
 
 	// Duplicate el next to each occurrence of el in this list.
