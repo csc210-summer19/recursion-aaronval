@@ -141,11 +141,11 @@ public class LinkedList<E extends Comparable<E>> {
 	}
 
 	private void removeAllHelper(E el, Node ref) {
-		if (el == first.data) 
+		if (el.equals(first.data))
 			first = ref.next;
-		else if (ref.next == null)
+		else if (ref == null)
 			return;
-		else if (el == ref.next.data)
+		else if (el.equals(ref.next.data))
 			ref.next = ref.next.next;
 		removeAllHelper(el, ref.next);
 	}
@@ -158,7 +158,7 @@ public class LinkedList<E extends Comparable<E>> {
 	private void duplicateAll(E el, Node ref) {
 		if (ref == null)
 			return;
-		else if (ref.data.equals(el)) {
+		else if (el.equals(ref.data)) {
 			ref.next = new Node(el, ref.next);
 			ref = ref.next;
 		}
