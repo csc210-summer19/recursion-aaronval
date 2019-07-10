@@ -69,6 +69,19 @@ public class LinkedList<E extends Comparable<E>> {
 			return 1 + sizeHelper(ref.next);
 	}
 
+	public boolean exists(String el) {
+		return existsHelper(el, first);
+	}
+
+	private boolean existsHelper(String el, Node ref) {
+		if (ref == null)
+			return false;
+		else if (ref.data.equals(el))
+			return true;
+		else
+			return existsHelper(el, ref.next);
+	}
+
 // Find the maximum value in this list using the element's compareTo method
 	public E max() {
 		if (size() == 0)
@@ -113,8 +126,10 @@ public class LinkedList<E extends Comparable<E>> {
 	}
 
 	private E get(Node ref, int startIndex, int stopIndex) {
-		// TODO: Complete this method using recursion, no loop allowed.
-		return null;
+		if (startIndex == stopIndex)
+			return (E) ref;
+		else
+			return get(ref.next, startIndex + 1, stopIndex);
 	}
 
 	// Complete method removeAll(E el) so all elements that

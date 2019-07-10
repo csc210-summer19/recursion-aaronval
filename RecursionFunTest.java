@@ -87,6 +87,7 @@ public class RecursionFunTest {
 
 		int[] a = { 2, 4, 6, 8 };
 		rf.reverseArray(a);
+
 		assertEquals(8, a[0]);
 		assertEquals(6, a[1]);
 		assertEquals(4, a[2]);
