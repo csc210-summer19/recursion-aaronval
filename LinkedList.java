@@ -146,12 +146,11 @@ public class LinkedList<E extends Comparable<E>> {
 		if (el.equals(first.data)) {
 			first = ref.next;
 			removeAllHelper(el, first);
-		}
-		else if(el.equals(ref.next.data)) {
+		} else if (el.equals(ref.next.data)) {
 			ref.next = ref.next.next;
 		}
 		removeAllHelper(el, ref.next);
-		
+
 	}
 
 	// Duplicate el next to each occurrence of el in this list.
