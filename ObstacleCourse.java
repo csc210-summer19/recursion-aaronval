@@ -96,11 +96,9 @@ public class ObstacleCourse {
 
 				if (escaped == false)
 					escaped = findExit(row, col - 1);
-
 			}
 			if (escaped == true)
 				course[row][col] = PART_OF_PATH;
-
 		}
 		return escaped;
 	}
