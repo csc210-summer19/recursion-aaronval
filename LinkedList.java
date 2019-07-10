@@ -127,7 +127,7 @@ public class LinkedList<E extends Comparable<E>> {
 
 	private E get(Node ref, int startIndex, int stopIndex) {
 		if (startIndex == stopIndex)
-			return (E) ref;
+			return (E) ref.data;
 		else
 			return get(ref.next, startIndex + 1, stopIndex);
 	}
@@ -137,6 +137,17 @@ public class LinkedList<E extends Comparable<E>> {
 	public void removeAll(E el) {
 		// This public method requires a call to a private helper method
 		// with first as an argument. It must be recursive, no loop allowed.
+		removeAllHelper(el, first);
+	}
+
+	private void removeAllHelper(E el, Node ref) {
+		if (el == first.data) 
+			first = ref.next;
+		else if (ref.next == null)
+			return;
+		else if (el == ref.next.data)
+			ref.next = ref.next.next;
+		removeAllHelper(el, ref.next);
 	}
 
 	// Duplicate el next to each occurrence of el in this list.
